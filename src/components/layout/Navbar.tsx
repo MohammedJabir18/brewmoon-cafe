@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Menu, X, Facebook, Instagram, Twitter } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import ThemeToggle from "../ui/ThemeToggle";
 
 const Navbar = () => {
@@ -36,43 +37,46 @@ const Navbar = () => {
             <nav className="flex space-x-6">
               <Link 
                 to="/" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
+                className="font-montserrat text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
               >
                 Home
               </Link>
               <Link 
                 to="/menu" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
+                className="font-montserrat text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
               >
                 Menu
               </Link>
               <Link 
                 to="/about" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
+                className="font-montserrat text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
               >
                 About
               </Link>
               <Link 
                 to="/services" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
+                className="font-montserrat text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
               >
                 Services
               </Link>
               <Link 
                 to="/gallery" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
+                className="font-montserrat text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
               >
                 Gallery
               </Link>
               <Link 
                 to="/contact" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
+                className="font-montserrat text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
               >
                 Contact
               </Link>
             </nav>
             
-            <div className="flex items-center">
+            <div className="flex items-center space-x-4">
+              <Button variant="default" className="bg-terracotta hover:bg-terracotta-dark text-white">
+                Reserve a Table
+              </Button>
               <ThemeToggle />
             </div>
           </div>
@@ -137,6 +141,16 @@ const Navbar = () => {
                 Contact
               </Link>
             </nav>
+            
+            <div className="mt-8">
+              <Button 
+                variant="default" 
+                className="w-full bg-terracotta hover:bg-terracotta-dark text-white py-6 text-lg"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Reserve a Table
+              </Button>
+            </div>
             
             <div className="mt-8 flex justify-center space-x-6">
               <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta">
