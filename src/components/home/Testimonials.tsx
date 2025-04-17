@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ArrowLeft, ArrowRight, Star, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -49,16 +49,28 @@ const testimonials: Testimonial[] = [
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-  };
+  }, []);
   
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => 
       prevIndex - 1 < 0 ? testimonials.length - 1 : prevIndex - 1
     );
-  };
+  }, []);
+
+  // Auto-rotation effect
+  useEffect(() => {
+    if (!isPaused) {
+      const interval = setInterval(() => {
+        nextSlide();
+      }, 5000); // Change testimonial every 5 seconds
+      
+      return () => clearInterval(interval);
+    }
+  }, [nextSlide, isPaused]);
   
   return (
     <section className="section-padding bg-coffee text-cream relative overflow-hidden">
@@ -78,7 +90,10 @@ const Testimonials = () => {
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <div className="relative p-8 md:p-12 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
             <div className="absolute -top-5 -left-5 text-terracotta opacity-50">
               <Quote size={60} />
@@ -124,7 +139,7 @@ const Testimonials = () => {
           <div className="flex justify-center mt-8 space-x-4">
             <Button 
               variant="outline" 
-              className="border-cream text-cream hover:bg-cream/10 rounded-full w-12 h-12 p-0"
+              className="border-cream/30 bg-cream/20 text-cream hover:bg-cream/30 rounded-full w-12 h-12 p-0"
               onClick={prevSlide}
               aria-label="Previous testimonial"
             >
@@ -132,7 +147,7 @@ const Testimonials = () => {
             </Button>
             <Button 
               variant="outline" 
-              className="border-cream text-cream hover:bg-cream/10 rounded-full w-12 h-12 p-0"
+              className="border-cream/30 bg-cream/20 text-cream hover:bg-cream/30 rounded-full w-12 h-12 p-0"
               onClick={nextSlide}
               aria-label="Next testimonial"
             >
