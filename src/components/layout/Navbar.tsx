@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 
-      ${isScrolled ? 'bg-background/95 backdrop-blur-md shadow-md' : 'bg-transparent'}`}
+      ${isScrolled ? 'bg-background/95 backdrop-blur-md shadow-md' : 'bg-background/5 backdrop-blur-sm'}`}
     >
       <div className="container mx-auto py-4 px-4 md:px-6">
         <div className="flex items-center justify-between">
@@ -34,42 +34,22 @@ const Navbar = () => {
           
           <div className="hidden md:flex items-center space-x-8">
             <nav className="flex space-x-6">
-              <Link 
-                to="/" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
-              >
-                Home
-              </Link>
-              <Link 
-                to="/menu" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
-              >
-                Menu
-              </Link>
-              <Link 
-                to="/about" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
-              >
-                About
-              </Link>
-              <Link 
-                to="/services" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
-              >
-                Services
-              </Link>
-              <Link 
-                to="/gallery" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
-              >
-                Gallery
-              </Link>
-              <Link 
-                to="/contact" 
-                className="font-montserrat text-charcoal hover:text-terracotta dark:text-cream dark:hover:text-terracotta transition-colors font-medium"
-              >
-                Contact
-              </Link>
+              {[
+                { name: "Home", path: "/" },
+                { name: "Menu", path: "/menu" },
+                { name: "About", path: "/about" },
+                { name: "Services", path: "/services" },
+                { name: "Gallery", path: "/gallery" },
+                { name: "Contact", path: "/contact" },
+              ].map((item) => (
+                <Link 
+                  key={item.name}
+                  to={item.path} 
+                  className="font-montserrat text-coffee dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-terracotta after:scale-x-0 after:origin-right after:transition-transform hover:after:scale-x-100 hover:after:origin-left"
+                >
+                  {item.name}
+                </Link>
+              ))}
             </nav>
             
             <div className="flex items-center">
@@ -81,7 +61,7 @@ const Navbar = () => {
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-charcoal dark:text-cream"
+              className="p-2 text-coffee dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -89,63 +69,37 @@ const Navbar = () => {
         </div>
       </div>
       
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-background dark:bg-charcoal-dark min-h-screen w-full absolute top-16 left-0 z-50 animate-fade-in">
           <div className="container mx-auto py-8 px-4">
             <nav className="flex flex-col space-y-6">
-              <Link 
-                to="/" 
-                className="font-montserrat text-2xl text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link 
-                to="/menu" 
-                className="font-montserrat text-2xl text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Menu
-              </Link>
-              <Link 
-                to="/about" 
-                className="font-montserrat text-2xl text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link 
-                to="/services" 
-                className="font-montserrat text-2xl text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Services
-              </Link>
-              <Link 
-                to="/gallery" 
-                className="font-montserrat text-2xl text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Gallery
-              </Link>
-              <Link 
-                to="/contact" 
-                className="font-montserrat text-2xl text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
+              {[
+                { name: "Home", path: "/" },
+                { name: "Menu", path: "/menu" },
+                { name: "About", path: "/about" },
+                { name: "Services", path: "/services" },
+                { name: "Gallery", path: "/gallery" },
+                { name: "Contact", path: "/contact" },
+              ].map((item) => (
+                <Link 
+                  key={item.name}
+                  to={item.path} 
+                  className="font-montserrat text-2xl text-coffee dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </nav>
             
             <div className="mt-8 flex justify-center space-x-6">
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta">
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-coffee dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors">
                 <Facebook size={24} />
               </a>
-              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta">
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-coffee dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors">
                 <Instagram size={24} />
               </a>
-              <a href="https://twitter.com/mohammedjabir__" target="_blank" rel="noopener noreferrer" className="text-charcoal dark:text-cream hover:text-terracotta dark:hover:text-terracotta">
+              <a href="https://twitter.com/mohammedjabir__" target="_blank" rel="noopener noreferrer" className="text-coffee dark:text-cream hover:text-terracotta dark:hover:text-terracotta transition-colors">
                 <Twitter size={24} />
               </a>
             </div>

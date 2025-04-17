@@ -94,13 +94,13 @@ const Testimonials = () => {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="relative p-8 md:p-12 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
+          <div className="relative p-8 md:p-12 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 shadow-xl transition-all duration-300 hover:bg-white/10">
             <div className="absolute -top-5 -left-5 text-terracotta opacity-50">
               <Quote size={60} />
             </div>
             
             <div className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0">
+              <div className="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 mx-auto md:mx-0 ring-4 ring-terracotta/20">
                 <img 
                   src={testimonials[currentIndex].image} 
                   alt={testimonials[currentIndex].name} 
@@ -139,7 +139,7 @@ const Testimonials = () => {
           <div className="flex justify-center mt-8 space-x-4">
             <Button 
               variant="outline" 
-              className="border-cream/30 bg-cream/20 text-cream hover:bg-cream/30 rounded-full w-12 h-12 p-0"
+              className="border-cream/30 bg-cream/20 text-cream hover:bg-cream/30 rounded-full w-12 h-12 p-0 transition-transform hover:scale-110"
               onClick={prevSlide}
               aria-label="Previous testimonial"
             >
@@ -147,7 +147,7 @@ const Testimonials = () => {
             </Button>
             <Button 
               variant="outline" 
-              className="border-cream/30 bg-cream/20 text-cream hover:bg-cream/30 rounded-full w-12 h-12 p-0"
+              className="border-cream/30 bg-cream/20 text-cream hover:bg-cream/30 rounded-full w-12 h-12 p-0 transition-transform hover:scale-110"
               onClick={nextSlide}
               aria-label="Next testimonial"
             >
@@ -160,7 +160,7 @@ const Testimonials = () => {
               <button
                 key={index}
                 className={`w-3 h-3 rounded-full mx-1 transition-colors duration-300 ${
-                  currentIndex === index ? "bg-terracotta" : "bg-cream/30"
+                  currentIndex === index ? "bg-terracotta" : "bg-cream/30 hover:bg-cream/50"
                 }`}
                 onClick={() => setCurrentIndex(index)}
                 aria-label={`Go to testimonial ${index + 1}`}
