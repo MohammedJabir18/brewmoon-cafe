@@ -9,8 +9,7 @@ const ThemeToggle = () => {
     if (storedTheme === 'dark' || storedTheme === 'light') {
       return storedTheme;
     }
-    // Explicitly default to 'light' mode
-    return 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
   useEffect(() => {
