@@ -42,7 +42,7 @@ const Gallery = () => {
     // Coffee Images
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1510707577719-ae7aecd90b17?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "https://images.unsplash.com/photo-1485808191679-5f86510681a2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "Signature Espresso Blend",
       category: "coffee"
     },

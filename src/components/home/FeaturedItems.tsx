@@ -21,7 +21,7 @@ const featuredItems: FeaturedItem[] = [
     name: "Signature Espresso Blend",
     description: "Our house-roasted beans with notes of chocolate, caramel, and a hint of citrus.",
     price: "$4.50",
-    image: "https://images.unsplash.com/photo-1510707577719-ae7aecd90b17?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://images.unsplash.com/photo-1485808191679-5f86510681a2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "Coffee",
     rating: 4.8,
     featured: true
