@@ -22,6 +22,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <Analytics /> {/* Added Vercel Analytics */}
       <BrowserRouter>
         <div className="flex flex-col min-h-screen">
           <Navbar />
